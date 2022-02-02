@@ -40,10 +40,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      location_id:{
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      }
+      // location_id:{
+      //   type: Sequelize.INTEGER,
+      //   allowNull: false,
+      // }
     });
   },
   down: async (queryInterface, Sequelize) => {

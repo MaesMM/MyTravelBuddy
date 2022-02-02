@@ -6,10 +6,10 @@ const test = async (req, res) => {
 };
 
 const register = async (req,res) => {
-  const { name, category, address, postal_code, city, state, country, latitude, longitude, image, description, rate, website, social_media} = req.body
+  const { owner_id, name, category, address, postal_code, city, state, country, latitude, longitude, image, description, rate, website, social_media} = req.body
 
   try{
-    const location = await Location.create({ name, category, address, postal_code, city, state, country, latitude, longitude, image, description, rate, website, social_media })
+    const location = await Location.create({owner_id, name, category, address, postal_code, city, state, country, latitude, longitude, image, description, rate, website, social_media })
   
     return res.json(location)
   }catch(err){
