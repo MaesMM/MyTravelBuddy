@@ -1,11 +1,233 @@
+@import "../styles/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+html {
+  font-size: 1rem;
+}
+
 body {
   position: relative;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #233e5c;
   overflow-x: hidden;
+}
+
+body * {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 8px 0;
+
+  width: fit-content;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  text-align: justify;
+}
+
+.error {
+  color: $red;
+  font-weight: 500;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max(320px, 75%);
+  min-height: calc(100vh - $header-height);
+  margin: auto;
+}
+
+.underline {
+  position: relative;
+  width: fit-content;
+}
+
+.underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 100px;
+  background-color: $accent-400;
+  bottom: 0;
+  left: 0;
+}
+
+.button {
+  background-color: $accent-400;
+  color: $white;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-start {
+  align-items: flex-start;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.primary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: fit-content;
+  height: 56px;
+  padding: 0 24px;
+  line-height: 0;
+  border: 0;
+  background-color: $accent-400;
+  font-size: 1.1rem;
+  color: $white;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 8px 0;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.primary-btn:hover {
+  background-color: $accent-200;
+  transition: all 0.2s ease;
+}
+
+.secondary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  line-height: 0;
+  height: 56px;
+  width: fit-content;
+  padding: 0 24px;
+  background-color: transparent;
+  font-size: 1.1rem;
+  border: 3px solid $accent-400;
+  box-sizing: border-box;
+  color: $accent-400;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 8px auto;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.secondary-btn:hover {
+  background-color: $accent-400;
+  color: $white;
+  transition: all 0.2s ease;
+}
+
+button.disabled {
+  background-color: $accent-800 !important;
+  cursor: no-drop;
+}
+a.disabled {
+  background-color: $accent-800 !important;
+  cursor: no-drop;
+}
+
+.secondary-btn.disabled {
+  background-color: transparent !important;
+  border-color: $accent-800 !important;
+  color: $accent-800 !important;
+  cursor: no-drop;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+  height: 40px;
+  background-color: white;
+
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  border: 0;
+  color: $primary-300;
+  box-shadow: 0 6px 32px rgba($color: $text-700, $alpha: 0.3);
+  outline: 0;
+}
+.select {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  padding: 0 10px;
+  height: 40px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  border: 0;
+  color: $primary-300;
+  box-shadow: 0 6px 32px rgba($color: $text-700, $alpha: 0.3);
+  outline: 0;
+}
+
+.input::placeholder {
+  color: rgba($color: $text-700, $alpha: 0.4);
+}
+
+.half {
+  width: 50%;
+}
+
+.third {
+  width: calc(100% / 3);
+}
+.two-thirds {
+  width: calc(2 * (100% / 3));
+}
+
+.quarter {
+  width: 25%;
+}
+
+.three-quarters {
+  width: 75%;
+}
+
+.remainder {
+  flex: 1;
 }
