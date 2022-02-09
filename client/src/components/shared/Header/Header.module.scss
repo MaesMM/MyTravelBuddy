@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 .header {
   position: relative;
   display: flex;
@@ -109,26 +111,11 @@
   transition: all 0.5s ease;
 }
 
-.navHeader {
-  position: absolute;
-  box-sizing: border-box;
-  padding-top: 80px;
-  right: 0;
-  top: 0;
-  z-index: 50;
-  background-color: white;
-  height: 100vh;
-  width: 320px;
-  transform: translateX(100%);
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
-  transition: all 0.5s ease;
-}
-
 .navHeaderInput {
   display: none;
 }
 
-.navHeader.isShown {
+.navHeaderInput:checked + .navHeader {
   transform: translateX(0);
   transition: all 0.5s ease;
 }
@@ -137,13 +124,16 @@
   display: flex;
   flex-direction: column;
   row-gap: 24px;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 500;
   list-style: none;
   width: 80%;
   margin: 40px auto;
   padding: 0;
+
   a {
+    color: $text-400;
+    font-weight: 600;
     text-decoration: none;
   }
 
@@ -152,23 +142,9 @@
   }
 }
 
-.identifier {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-  height: 50px;
-  border-radius: 10px;
-  background-color: #ffcb1f;
-  color: white;
-}
-
 .Languages {
   position: absolute;
   box-sizing: border-box;
-
   margin-right: 125px;
   display: flex;
   justify-content: space-around;
@@ -186,7 +162,11 @@
   border-radius: 16px;
 }
 
-.Languages.isShown1 {
+.LanguagesInput {
+  display: none;
+}
+
+.LanguagesInput:checked + .Languages {
   transform: translateY(0);
   transition: all 0.5 ease;
   margin-top: 100px;

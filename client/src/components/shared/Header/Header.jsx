@@ -8,8 +8,8 @@ import useClickedOutside1 from "../../../hooks/useClickedOutside1";
 
 import { ReactComponent as Arrow } from "../../../assets/icons/arrow.svg";
 
-
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
   const{target, button, isShown, setIsShown} =  useClickedOutside();

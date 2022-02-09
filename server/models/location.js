@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsToMany(models.User,{through: "user_location", foreignKey: "location_id"})
     }
   };
+
   Location.init({
     name: {
       type: DataTypes.STRING,
@@ -45,11 +46,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     latitude:  {
       type: DataTypes.FLOAT,
-      allowNull: false,
     },
     longitude:  {
       type: DataTypes.FLOAT,
-      allowNull: false,
     },
     image: {
       type: DataTypes.STRING,
@@ -59,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     rate:  {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      defaultValue: 69,
     },
     website: {
       type: DataTypes.STRING,
@@ -76,5 +75,6 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Location',
     tableName: 'locations',
   });
+  
   return Location;
 };

@@ -18,5 +18,17 @@ const register = async (req,res) => {
   }
 }
 
+// Used in './structure.js'
+const owner_register = async (name, firstname, email, phone, siret, document) => {
+  // -> check if owner exists already
+  try{
+    const owner = await Owner.create({ name, firstname, email, phone, siret, document });
+    return owner
+  }catch(err){
+    console.log(err)
+    return false
+  }
+};
 
-module.exports = { test, register };
+
+module.exports = { test, register, owner_register };

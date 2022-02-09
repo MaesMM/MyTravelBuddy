@@ -18,5 +18,17 @@ const register = async (req,res) => {
   }
 }
 
+const location_register = async (name, category, address, postal_code, city, state, country, image, description, website, social_media, owner_id) => {
+  // API to find: latitude, longitude
+  // 'rate' field shouldn't be in the post request
+  
+  try{
+    const location = await Location.create({ name: name, category: category, address: address, postal_code: postal_code, city: city, state: state, country: country, image: image, description: description, website: website, social_media: social_media, owner_id: owner_id})
+    return location
+  }catch(err){
+    console.log(err)
+    return false
+  }
+};
 
-module.exports = { test, register };
+module.exports = { test, register, location_register };
