@@ -48,7 +48,6 @@ p {
 }
 
 .error {
-  margin: 0 0 8px 0;
   color: $red;
   font-weight: 500;
 }
@@ -62,8 +61,8 @@ p {
   flex-direction: column;
   align-items: center;
   width: max(320px, 75%);
-  height: calc(100vh - $header-height);
-  margin: 0 auto;
+  min-height: calc(100vh - $header-height);
+  margin: auto;
 }
 
 .underline {
@@ -111,14 +110,13 @@ p {
   align-items: center;
   justify-content: space-evenly;
   width: fit-content;
-  box-sizing: border-box;
   height: 56px;
   padding: 0 24px;
   line-height: 0;
   border: 0;
   background-color: $accent-400;
   font-size: 1.1rem;
-  color: $white !important;
+  color: $white;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
@@ -175,31 +173,20 @@ a.disabled {
   cursor: no-drop;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  row-gap: 8px;
-  margin-bottom: 12px;
-}
-
-.label {
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
 .input {
   width: 100%;
   box-sizing: border-box;
   padding: 0 10px;
-  height: 48px;
+  height: 40px;
   background-color: white;
-  font-size: 1.01rem;
+
+  font-size: 1.05rem;
   font-weight: 600;
-  border-radius: 16px;
+  margin-bottom: 24px;
+  border-radius: 10px;
   border: 0;
   color: $primary-300;
-  box-shadow: 0 6px 32px rgba($color: $text-700, $alpha: 0.2);
+  box-shadow: 0 6px 32px rgba($color: $text-700, $alpha: 0.3);
   outline: 0;
 }
 .select {
@@ -220,11 +207,6 @@ a.disabled {
 
 .input::placeholder {
   color: rgba($color: $text-700, $alpha: 0.4);
-}
-
-.primary-link {
-  font-weight: 500;
-  color: $accent-400;
 }
 
 .half {
