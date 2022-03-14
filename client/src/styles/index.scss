@@ -47,6 +47,11 @@ p {
   text-align: justify;
 }
 
+a {
+  color: $text-400;
+  font-weight: 600;
+}
+
 .error {
   color: $red;
   font-weight: 500;
@@ -54,6 +59,7 @@ p {
 
 .full-width {
   width: 100% !important;
+  box-sizing: border-box;
 }
 
 .page {

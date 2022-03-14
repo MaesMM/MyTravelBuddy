@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^0.26.0",
     "react-indiana-drag-scroll": "^2.1.0"
   }
 }

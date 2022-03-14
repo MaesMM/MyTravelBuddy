@@ -75,23 +75,17 @@ const Header = () => {
         ref={target}
         className={`${styles.navHeader} ${isShown && styles.isShown}`}
       >
-        <ul className={styles.menu}>
-          <li>
-            <a className={styles.identifier} href="identifier">
-              S'identifier
-            </a>
-          </li>
+        <div className={styles.menu}>
+          <a className="primary-btn full-width" href="identifier">
+            S'identifier
+          </a>
 
-          <li>
-            <a href="contacter">Contacter</a>
-          </li>
-          <li>
-            <a href="espace_professionnel">Espace professionnel</a>
-          </li>
-          <li>
-            <a href="mentions_légales">Mentions légales</a>
-          </li>
-        </ul>
+          <a href="contacter">Contacter</a>
+
+          <a href="espace_professionnel">Espace professionnel</a>
+
+          <a href="mentions_légales">Mentions légales</a>
+        </div>
       </div>
 
       <div className={styles.MainMenu}>
