@@ -179,22 +179,32 @@ a.disabled {
   cursor: no-drop;
 }
 
+.label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
 .input {
   width: 100%;
   box-sizing: border-box;
   padding: 0 10px;
-  height: 40px;
+  height: 48px;
   background-color: white;
-
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 24px;
   border-radius: 10px;
   border: 0;
   color: $primary-300;
-  box-shadow: 0 6px 32px rgba($color: $text-700, $alpha: 0.3);
+  box-shadow: 0 6px 32px rgba($color: $text-700, $alpha: 0.2);
   outline: 0;
 }
+
+.form-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .select {
   width: 100%;
   box-sizing: border-box;

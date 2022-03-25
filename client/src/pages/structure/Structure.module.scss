@@ -1,0 +1,11 @@
+@import "../../styles/variables.scss";
+
+.layout {
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+.content {
+  margin: 48px 0 0 40px;
+}

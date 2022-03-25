@@ -4,7 +4,7 @@ import ScrollContainer from "react-indiana-drag-scroll";
 
 import axios from "axios";
 
-const MainMenu = () => {
+const MainMenu = ({}) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -13,8 +13,7 @@ const MainMenu = () => {
   // que useEffect ne s’exécutera qu’une fois, un peu comme
   // componentDidMount()
   useEffect(() => {
-
-    axios.get("")
+    axios.get("");
 
     fetch([
       { id: 1, name: "Apples", price: "$2" },

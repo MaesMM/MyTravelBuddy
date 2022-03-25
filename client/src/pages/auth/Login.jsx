@@ -25,7 +25,7 @@ const Login = () => {
     reset();
   };
   return (
-    <main className="page">
+    <main className={`page ${styles.container}`}>
       <form onSubmit={handleSubmit(onSubmitHandler)} className={styles.form}>
         <h2 className={styles.title}>Connexion</h2>
 
