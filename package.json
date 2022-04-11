@@ -1,6 +1,9 @@
 {
   "dependencies": {
+    "aws-sdk": "^2.1095.0",
     "axios": "^0.26.0",
+    "fs": "^0.0.1-security",
+    "multer": "^1.4.4",
     "react-indiana-drag-scroll": "^2.1.0"
   }
 }

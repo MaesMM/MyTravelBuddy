@@ -1,8 +1,17 @@
 const express = require("express");
-const { sequelize } = require("./models");
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
+const { sequelize } = require("./models");
 const { validateToken } = require("./controllers/JWT");
+
+// s3 Packages
+const fs = require('fs')
+const util = require('util')
+const unlinkFile = util.promisify(fs.unlink)
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
+const { uploadFile, getFileStream } = require('./s3')
+
 require("dotenv").config();
 const app = express();
 
@@ -68,6 +77,33 @@ app.post("/api/structure/create/location", async (req, res) =>
 app.get("/api/structure/getInfo", async (req, res) =>
   Structure.getInfo(req, res)
 );
+
+
+
+// s3 handler
+app.get('/images/:key', (req, res) => {
+  console.log(req.params)
+  const key = req.params.key
+  const readStream = getFileStream(key)
+
+  readStream.pipe(res)
+})
+
+app.post('/images', upload.single('image'), async (req, res) => {
+  const file = req.file
+  console.log(file)
+
+  // apply filter
+  // resize 
+
+  const result = await uploadFile(file)
+  await unlinkFile(file.path)
+  console.log(result)
+  const description = req.body.description
+  res.send({imagePath: `/images/${result.Key}`})
+})
+// s3 end
+
 
 // Start Server
 
