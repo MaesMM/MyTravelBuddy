@@ -3,8 +3,9 @@
 .navbar {
   display: flex;
   flex-direction: column;
-  width: 240px;
+  min-width: 240px;
   height: 100%;
+
   padding: 40px 8px;
   background-color: white;
   box-sizing: border-box;
@@ -24,7 +25,6 @@
   font-size: 1.1rem;
   color: rgba($color: $text-400, $alpha: 0.75);
   transition: all 0.2s ease;
-
 }
 
 :not(.active).link:hover {
@@ -37,5 +37,4 @@
   background-color: rgba($color: $accent-400, $alpha: 0.15);
   color: $accent-400;
   transition: all 0.2s ease;
-
 }

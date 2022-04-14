@@ -1,10 +1,11 @@
-import { Outlet } from "react-router-dom";
+import styles from "../../Structure.module.scss";
+
 
 const Profile = () => {
   return (
     <div>
-      <h2>Profil Public</h2>
-      <Outlet />
+      <h2  className={styles.pageTitle}>Profil Public</h2>
+
     </div>
   );
 };
