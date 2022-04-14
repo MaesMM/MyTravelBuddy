@@ -1,10 +1,9 @@
-import { Outlet } from "react-router-dom";
+import styles from "../../Structure.module.scss";
 
 const Settings = () => {
   return (
     <div>
-      <h2>Paramètres</h2>
-      <Outlet />
+      <h2 className={styles.pageTitle}>Paramètres</h2>
     </div>
   );
 };

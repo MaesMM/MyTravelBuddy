@@ -1,7 +1,5 @@
 import { Outlet } from "react-router-dom";
-
 import styles from "./Structure.module.scss";
-
 import Navbar from "../../components/structure/Navbar";
 
 const StructureLayout = () => {

@@ -11,6 +11,8 @@ import Profile from "./pages/structure/pages/Profile/Profile";
 import Events from "./pages/structure/pages/Events/Events";
 import Settings from "./pages/structure/pages/Settings/Settings";
 
+import Create from "./pages/structure/pages/Events/Create/Create";
+
 function App() {
   return (
     <div className="App">
@@ -21,10 +23,12 @@ function App() {
           <Route exact path="/system" element={<System />} />
           <Route exact path="/auth/register" element={<Register />} />
           <Route exact path="/auth/login" element={<Login />} />
+
           <Route exact path="/structures" element={<StructureLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="profile" element={<Profile />} />
             <Route path="events" element={<Events />} />
+            <Route path="events/create" element={<Create />} />
             <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>

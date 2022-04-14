@@ -1,10 +1,9 @@
-import { Outlet } from "react-router-dom";
+import styles from "../../Structure.module.scss";
 
 const Dashboard = () => {
   return (
     <div>
-      <h2>Tableau de bord</h2>
-      <Outlet />
+      <h2 className={styles.pageTitle}>Tableau de bord</h2>
     </div>
   );
 };

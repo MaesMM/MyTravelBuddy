@@ -1,0 +1,19 @@
+@import "../../Structure.module.scss";
+
+.eventList {
+  display: flex;
+  gap: 16px;
+}
+
+.event {
+  width: 128px;
+  height: 188px;
+  background-color: red;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
