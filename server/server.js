@@ -32,6 +32,9 @@ app.post("/ratings", async (req, res) => Rating.register(req, res));
 //event
 const Event = require("./controllers/event");
 app.post("/events", async (req, res) => Event.register(req, res));
+app.post("/test", async (req, res) => Event.test(req, res));
+
+app.post("/testevent", async (req, res) => Event.apicall(req, res));
 
 // administrator
 const Administrator = require("./controllers/administrator");
