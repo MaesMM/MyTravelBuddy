@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-<<<<<<< HEAD
-import MainMenu from "../../components/shared/Header/MainMenu/MainMenu"
-=======
 import Searchbar from "../../components/client/Searchbar/Searchbar";
 import MainMenu from "../../components/shared/Header/MainMenu/MainMenu";
 import { ReactComponent as Spinner } from "../../assets/icons/spin.svg";
 
->>>>>>> upstream/main
 import { getIcon } from "../../components/shared/Pin/getIcon";
 import Place from "../../components/shared/Place/Place";
 import styles from "./Home.module.scss";
@@ -37,42 +33,7 @@ const Home = () => {
 
 
   return (
-    <div className={styles.home}>
-      <div className={styles.MainMenu}>
-        <MainMenu/>
-      </div>
-      {position && (
-        <MapContainer className={styles.map} center={position} zoom={13}>
-          <TileLayer
-            attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
-            url="https://api.mapbox.com/styles/v1/louislecout/ckzwfj8rc00a414jydquyrqpv/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibG91aXNsZWNvdXQiLCJhIjoiY2t6d2ZubTEzMmoxNTJ3cGU5eGJ5amg4eiJ9.Av7gubKDgQ_33XWfC5nUHQ"
-          />
-          {/* <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          /> */}
-          <Marker 
-            ref={button2}
-            position={position} 
-            icon={getIcon("theater")}
-            eventHandlers={{
-              click: () => {
-                setIsShown2(!isShown2)
-                console.log(isShown2)
-                
-            },
-          }}>
-            
-          </Marker>
-        </MapContainer>
-      )}
-        {isShown2 && 
-        <div className={styles.background}>
-          <div className={styles.containerPlace} ref={target2}>
-            <Place/>
-          </div>
-        </div>}
-    </div>
+
     <>
       {isGeoLocAllowed && position && (
         <div className={styles.Home}>

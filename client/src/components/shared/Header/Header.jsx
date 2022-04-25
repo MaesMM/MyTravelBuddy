@@ -12,13 +12,6 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const { target, button, isShown, setIsShown } = useClickedOutside();
   const { target1, button1, isShown1, setIsShown1 } = useClickedOutside1();
-<<<<<<< HEAD
-=======
-
-  console.log(isShown1, "lang");
-  console.log(isShown, "nav");
-  console.log("----");
->>>>>>> upstream/main
 
   return (
     <div className={styles.headerContainer}>
@@ -59,11 +52,7 @@ const Header = () => {
           <a href="mentions_légales">Mentions légales</a>
         </div>
       </div>
-<<<<<<< HEAD
 
-     
-=======
->>>>>>> upstream/main
     </div>
   );
 };

@@ -5,9 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Home from "./pages/Home/Home";
-<<<<<<< HEAD
 import EspacePro from "./pages/EspacePro/pro";
-=======
 import StructureLayout from "./pages/structure/StructureLayout";
 import Dashboard from "./pages/structure/pages/Dashboard/Dashboard";
 import Profile from "./pages/structure/pages/Profile/Profile";
@@ -15,7 +13,6 @@ import Events from "./pages/structure/pages/Events/Events";
 import Settings from "./pages/structure/pages/Settings/Settings";
 
 import Create from "./pages/structure/pages/Events/Create/Create";
->>>>>>> upstream/main
 
 function App() {
   return (
@@ -27,18 +24,14 @@ function App() {
           <Route exact path="/system" element={<System />} />
           <Route exact path="/auth/register" element={<Register />} />
           <Route exact path="/auth/login" element={<Login />} />
-<<<<<<< HEAD
-          <Route exact path="/espace_professionnel" element={<EspacePro />} />
-=======
 
           <Route exact path="/structures" element={<StructureLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile" element={<EspacePro />} />
             <Route path="events" element={<Events />} />
             <Route path="events/create" element={<Create />} />
             <Route path="settings" element={<Settings />} />
           </Route>
->>>>>>> upstream/main
         </Routes>
       </Router>
     </div>
