@@ -1,11 +1,11 @@
-import Header from "./components/shared/Header/Header";
 import System from "./styles/system/System";
+import Header from "./components/shared/Header/Header";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Home from "./pages/Home/Home";
-import EspacePro from "./pages/EspacePro/pro";
+
 import StructureLayout from "./pages/structure/StructureLayout";
 import Dashboard from "./pages/structure/pages/Dashboard/Dashboard";
 import Profile from "./pages/structure/pages/Profile/Profile";
@@ -27,7 +27,7 @@ function App() {
 
           <Route exact path="/structures" element={<StructureLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="profile" element={<EspacePro />} />
+            <Route path="profile" element={<Profile />} />
             <Route path="events" element={<Events />} />
             <Route path="events/create" element={<Create />} />
             <Route path="settings" element={<Settings />} />
