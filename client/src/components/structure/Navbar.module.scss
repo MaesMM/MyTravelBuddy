@@ -1,0 +1,40 @@
+@import "../../styles/variables.scss";
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  min-width: 240px;
+  height: 100%;
+
+  padding: 40px 8px;
+  background-color: white;
+  box-sizing: border-box;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.link {
+  padding: 16px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: rgba($color: $text-400, $alpha: 0.75);
+  transition: all 0.2s ease;
+}
+
+:not(.active).link:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  color: $text-400;
+  transition: all 0.2s ease;
+}
+
+.active {
+  background-color: rgba($color: $accent-400, $alpha: 0.15);
+  color: $accent-400;
+  transition: all 0.2s ease;
+}

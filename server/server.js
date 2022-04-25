@@ -2,6 +2,7 @@ const express = require("express");
 const { sequelize } = require("./models");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const { validateToken } = require("./controllers/JWT");
 require("dotenv").config();
 const app = express();
 
@@ -122,7 +123,7 @@ app.put("/owners/:id", async (req, res) => {
 const Price = require("./controllers/price");
 app.post("/prices", async (req, res) => Price.register(req, res));
 
-app.get("/test", async (req, res) => res.send("prout"));
+app.get("/test", async (req, res) => res.send("test"));
 app.get("/api/test", async (req, res) => await User.test(req, res));
 
 app.get("/prices/:id", async (req, res) => {
@@ -136,11 +137,29 @@ app.delete("/prices/:id", async (req, res) => {
 app.put("/prices/:id", async (req, res) => {
   Price.modifyById(req, res);
 });
+// Authentication
+const Auth = require("./controllers/authenticator");
+app.post("/api/register", async (req, res) => Auth.register(req, res));
+app.post("/api/login", async (req, res) => Auth.login(req, res));
+app.get("/api/profile", validateToken, async (req, res) =>
+  Auth.profile(req, res)
+);
+
+const Structure = require("./controllers/structure");
+app.post("/api/structure/create/owner", async (req, res) =>
+  Structure.register_owner(req, res)
+);
+app.post("/api/structure/create/location", async (req, res) =>
+  Structure.register_location(req, res)
+);
+app.get("/api/structure/getInfo", async (req, res) =>
+  Structure.getInfo(req, res)
+);
 
 // Start Server
 
 app.listen({ port: PORT }, async () => {
   console.log("Connecting...");
-  await sequelize.sync(); //{ alter: true }
+  await sequelize.sync({ alter: true });
   console.log("Running on port 8080 !");
 });

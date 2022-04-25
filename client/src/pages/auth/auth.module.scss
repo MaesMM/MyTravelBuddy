@@ -1,0 +1,39 @@
+.container {
+  justify-content: center;
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.topRow {
+  justify-content: space-between;
+  column-gap: 16px;
+}
+
+.form {
+  width: clamp(300px, 80%, 480px);
+  margin: 80px auto;
+}
+
+.bottomText {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.bottomRow {
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 580px) {
+  .bottomRow {
+    flex-direction: column;
+    row-gap: 16px;
+  }
+  .bottomText {
+    flex-direction: column;
+  }
+}

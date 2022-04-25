@@ -1,0 +1,121 @@
+@import "../../../styles/variables.scss";
+
+.searchbarContainer {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 50%;
+  height: 48px;
+}
+
+.searchbar {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 32px rgba($color: $text-700, $alpha: 0.2);
+  overflow: hidden;
+
+  * {
+    outline: 0;
+    border: 0;
+  }
+}
+
+.input {
+  flex: 1;
+  padding-left: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  background-color: $accent-400;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  svg {
+    color: #fff;
+    width: 28px;
+    height: 28px;
+  }
+
+  &:hover {
+    background-color: $accent-300;
+  }
+}
+
+.filtersBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  min-width: 120px;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: pointer;
+  padding: 0 12px;
+  color: $text-800;
+  background-color: #fff;
+  border-radius: 12px 0 0 12px;
+  border-right: 3px solid #ebebeb;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: $text-900;
+    transform: rotate(0);
+    transition: all 0.2s ease;
+  }
+}
+
+.filtersShown {
+  svg {
+    transform: rotate(-180deg);
+    transition: all 0.2s ease;
+  }
+}
+
+.filtersContainer {
+  margin-top: 16px;
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  max-height: 0;
+  padding: 0 16px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 32px rgba($color: $text-700, $alpha: 0.2);
+  font-weight: 500;
+  overflow: hidden;
+
+  transition: all 0.4s ease;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding: 8px 0;
+
+  label,
+  input {
+    user-select: none;
+    cursor: pointer;
+  }
+}
+
+.show {
+  padding: 16px;
+  max-height: 224px;
+}

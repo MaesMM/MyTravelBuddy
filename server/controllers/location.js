@@ -16,7 +16,7 @@ const register = async (req,res) => {
     console.log(err)
     return res.status(500).json(err)
   }
-}
+};
 
 const getById = async (req,res) => {
   const id = req.params.id

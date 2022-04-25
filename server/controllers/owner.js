@@ -1,69 +1,47 @@
-const { Owner } = require("../models");
-
-const test = async (req, res) => {
-  console.log("yee");
-  return res.status(200).send("It worksss");
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class Owner extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  Owner.init(
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      firstname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      phone: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      siret: {
+        type: DataTypes.STRING,
+      },
+      document: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      modelName: "Owner",
+      tableName: "owners",
+    }
+  );
+  return Owner;
 };
-
-const register = async (req,res) => {
-  const {name, firstname, email, phone, siret, document} = req.body
-
-  try{
-    const owner = await Owner.create({ name, firstname, email, phone, siret, document })
-  
-    return res.json(owner)
-  }catch(err){
-    console.log(err)
-    return res.status(500).json(err)
-  }
-}
-
-const getById = async (req,res) => {
-  const id = req.params.id
-  try {
-    const owner = await Owner.findOne({
-      where: { id },
-    })
-
-    return res.json(owner)
-  } catch (err) {
-    console.log(err)
-    return res.status(500).json({error: 'something went wrong'})
-  }
-}
-
-const deleteById = async (req,res) => {
-  const id = req.params.id
-  try {
-    const owner = await Owner.findOne({ where: { id }})
-    await owner.destroy()
-
-    return res.json({message: 'Owner deleted'})
-    } catch (err) {
-    console.log(err)
-    return res.status(500).json({error: 'something went wrong'})
-  }
-}
-
-const modifyById = async (req,res) => {
-  const id = req.params.id
-  const {name, firstname, email, phone, siret, document} = req.body
-  try {
-    const owner = await Owner.findOne({ where: { id }})
-    owner.name = name
-    owner.firstname = firstname
-    owner.email = email
-    owner.phone = phone
-    owner.siret = siret
-    owner.document = document
-
-
-    await owner.save()
-
-    return res.json(owner)
-    } catch (err) {
-    console.log(err)
-    return res.status(500).json({error: 'something went wrong'})
-  }
-}
-module.exports = { test, register, getById, deleteById, modifyById };

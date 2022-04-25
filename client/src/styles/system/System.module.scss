@@ -1,0 +1,48 @@
+@import "../variables.scss";
+
+.bigSection {
+  width: 100%;
+  margin: 40px 0;
+}
+
+.bigSection > h1 {
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
+.section {
+  width: fit-content;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.paragraph {
+  width: 400px;
+}
+
+.positioningRow {
+  width: 500px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.positioningRow div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: $white;
+  height: 40px;
+}
+
+.red {
+  background-color: $red;
+}
+.yellow {
+  background-color: $accent-300;
+}
+.blue {
+  background-color: $primary-300;
+}
