@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import Searchbar from "../../components/client/Searchbar/Searchbar";
 import MainMenu from "../../components/shared/Header/MainMenu/MainMenu";
+import { ReactComponent as Spinner } from "../../assets/icons/spin.svg";
 
 import { getIcon } from "../../components/shared/Pin/getIcon";
 
@@ -9,6 +10,15 @@ import styles from "./Home.module.scss";
 
 const Home = () => {
   const [position, setPosition] = useState(null);
+  const [isGeoLocAllowed, setIsGeoLocAllowed] = useState(true);
+
+  navigator.permissions.query({ name: "geolocation" }).then(function (result) {
+    // Will return ['granted', 'prompt', 'denied']
+    result.state === "granted" || result.state === "prompt"
+      ? setIsGeoLocAllowed(true)
+      : setIsGeoLocAllowed(false);
+  });
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((geoloc) =>
       setPosition([geoloc.coords.latitude, geoloc.coords.longitude])
@@ -17,7 +27,7 @@ const Home = () => {
 
   return (
     <>
-      {position ? (
+      {isGeoLocAllowed && position && (
         <div className={styles.Home}>
           <main className={styles.mainContent}>
             <Searchbar />
@@ -37,11 +47,18 @@ const Home = () => {
           </main>
           <MainMenu />
         </div>
-      ) : (
-        <div>
-          MyTravelBuddy a besoin d'accéder à votre position pour fonctionner
+      )}
+
+      {!isGeoLocAllowed && !position && (
+        <div className={styles.message}>
+          <Spinner className={styles.spinner} />
         </div>
       )}
+      {/* {!isGeoLocAllowed && (
+        <div className={styles.message}>
+          MyTravelBuddy a besoin d'accéder à votre position pour fonctionner
+        </div>
+      )} */}
     </>
   );
 };

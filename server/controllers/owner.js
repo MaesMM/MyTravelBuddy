@@ -1,34 +1,47 @@
-const { Owner } = require("../models");
-
-const test = async (req, res) => {
-  console.log("yee");
-  return res.status(200).send("It worksss");
-};
-
-const register = async (req,res) => {
-  const {name, firstname, email, phone, siret, document} = req.body
-
-  try{
-    const owner = await Owner.create({ name, firstname, email, phone, siret, document })
-  
-    return res.json(owner)
-  }catch(err){
-    console.log(err)
-    return res.status(500).json(err)
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class Owner extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
   }
-}
-
-// Used in './structure.js'
-const owner_register = async (name, firstname, email, phone, siret, document) => {
-  // -> check if owner exists already
-  try{
-    const owner = await Owner.create({ name, firstname, email, phone, siret, document });
-    return owner
-  }catch(err){
-    console.log(err)
-    return false
-  }
+  Owner.init(
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      firstname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      phone: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      siret: {
+        type: DataTypes.STRING,
+      },
+      document: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      modelName: "Owner",
+      tableName: "owners",
+    }
+  );
+  return Owner;
 };
-
-
-module.exports = { test, register, owner_register };
