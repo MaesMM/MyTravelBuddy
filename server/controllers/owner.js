@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { Owner } = require("../models");
 
 const test = async (req, res) => {
   console.log("yee");
@@ -6,12 +6,12 @@ const test = async (req, res) => {
 };
 
 const register = async (req,res) => {
-  const {name, firstname, email, password, image, isAdmin} = req.body
+  const {name, firstname, email, phone, siret, document} = req.body
 
   try{
-    const user = await User.create({ name, firstname, email, password, image, isAdmin })
+    const owner = await Owner.create({ name, firstname, email, phone, siret, document })
   
-    return res.json(user)
+    return res.json(owner)
   }catch(err){
     console.log(err)
     return res.status(500).json(err)
@@ -21,11 +21,11 @@ const register = async (req,res) => {
 const getById = async (req,res) => {
   const id = req.params.id
   try {
-    const user = await User.findOne({
+    const owner = await Owner.findOne({
       where: { id },
     })
 
-    return res.json(user)
+    return res.json(owner)
   } catch (err) {
     console.log(err)
     return res.status(500).json({error: 'something went wrong'})
@@ -35,10 +35,10 @@ const getById = async (req,res) => {
 const deleteById = async (req,res) => {
   const id = req.params.id
   try {
-    const user = await User.findOne({ where: { id }})
-    await user.destroy()
+    const owner = await Owner.findOne({ where: { id }})
+    await owner.destroy()
 
-    return res.json({message: 'user deleted'})
+    return res.json({message: 'Owner deleted'})
     } catch (err) {
     console.log(err)
     return res.status(500).json({error: 'something went wrong'})
@@ -47,19 +47,20 @@ const deleteById = async (req,res) => {
 
 const modifyById = async (req,res) => {
   const id = req.params.id
-  const {name, firstname, email, password, image, isAdmin } = req.body
+  const {name, firstname, email, phone, siret, document} = req.body
   try {
-    const user = await User.findOne({ where: { id }})
-    user.name = name
-    user.firstname = firstname
-    user.email = email
-    user.password = password
-    user.image = image
-    user.isAdmin = isAdmin
+    const owner = await Owner.findOne({ where: { id }})
+    owner.name = name
+    owner.firstname = firstname
+    owner.email = email
+    owner.phone = phone
+    owner.siret = siret
+    owner.document = document
 
-    await user.save()
 
-    return res.json(user)
+    await owner.save()
+
+    return res.json(owner)
     } catch (err) {
     console.log(err)
     return res.status(500).json({error: 'something went wrong'})
