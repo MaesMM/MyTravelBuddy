@@ -10,7 +10,7 @@ module.exports = {
       },
       rate: {
         allowNull: false,
-        type: Sequelize.FLOAT,
+        type: Sequelize.INTEGER
       },
       comment: {
         type: Sequelize.STRING,

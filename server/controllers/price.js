@@ -1,22 +1,37 @@
-const { Price } = require("../models");
-
-const test = async (req, res) => {
-  console.log("yee");
-  return res.status(200).send("It worksss");
-};
-
-const register = async (req,res) => {
-  const {type, value} = req.body
-
-  try{
-    const price = await Price.create({ type, value })
-  
-    return res.json(price)
-  }catch(err){
-    console.log(err)
-    return res.status(500).json(err)
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class Prices extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+      this.belongsTo(models.Event, { foreignKey: "event_id" });
+    }
   }
-}
-
-
-module.exports = { test, register };
+  Prices.init(
+    {
+      type: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      value: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      event_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      modelName: "Price",
+      tableName: "prices",
+    }
+  );
+  return Prices;
+};
