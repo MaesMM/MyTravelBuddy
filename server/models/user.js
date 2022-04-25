@@ -11,8 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsToMany(models.Location,{through: "user_location", foreignKey: "user_id"})
-    }
+     }
   };
   User.init({
     name: {

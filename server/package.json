@@ -19,6 +19,6 @@
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3-rc.0",
     "parseur": "^0.1.0",
-    "sequelize": "^6.9.0"
+    "sequelize": "^6.18.0"
   }
 }

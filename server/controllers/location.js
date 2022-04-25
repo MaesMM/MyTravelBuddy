@@ -5,87 +5,72 @@ const test = async (req, res) => {
   return res.status(200).send("It worksss");
 };
 
-const register = async (req, res) => {
-  const {
-    name,
-    category,
-    address,
-    postal_code,
-    city,
-    state,
-    country,
-    latitude,
-    longitude,
-    image,
-    description,
-    rate,
-    website,
-    social_media,
-    owner_id,
-  } = req.body;
+const register = async (req,res) => {
+  const { owner_id, name, category, address, postal_code, city, state, country, latitude, longitude, image, description, rate, website, social_media} = req.body
 
-  try {
-    const location = await Location.create({
-      name,
-      category,
-      address,
-      postal_code,
-      city,
-      state,
-      country,
-      latitude,
-      longitude,
-      image,
-      description,
-      rate,
-      website,
-      social_media,
-      owner_id
-    });
-
-    return res.json(location);
-  } catch (err) {
-    console.log(err);
-    return res.status(500).json(err);
+  try{
+    const location = await Location.create({owner_id, name, category, address, postal_code, city, state, country, latitude, longitude, image, description, rate, website, social_media })
+  
+    return res.json(location)
+  }catch(err){
+    console.log(err)
+    return res.status(500).json(err)
   }
 };
 
-const location_register = async (
-  name,
-  category,
-  address,
-  postal_code,
-  city,
-  state,
-  country,
-  image,
-  description,
-  website,
-  social_media,
-  owner_id
-) => {
-  // API to find: latitude, longitude
-  // 'rate' field shouldn't be in the post request
+const getById = async (req,res) => {
+  const id = req.params.id
   try {
-    const location = await Location.create({
-      name: name,
-      category: category,
-      address: address,
-      postal_code: postal_code,
-      city: city,
-      state: state,
-      country: country,
-      image: image,
-      description: description,
-      website: website,
-      social_media: social_media,
-      owner_id: owner_id,
-    });
-    return location;
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
+    const location = await Location.findOne({
+      where: { id },
+    })
 
-module.exports = { test, register, location_register };
+    return res.json(location)
+  } catch (err) {
+    console.log(err)
+    return res.status(500).json({error: 'something went wrong'})
+  }
+}
+
+const deleteById = async (req,res) => {
+  const id = req.params.id
+  try {
+    const location = await Location.findOne({ where: { id }})
+    await location.destroy()
+
+    return res.json({message: 'Location deleted'})
+    } catch (err) {
+    console.log(err)
+    return res.status(500).json({error: 'something went wrong'})
+  }
+}
+
+const modifyById = async (req,res) => {
+  const id = req.params.id
+  const {name, category, address, postal_code, city, state, country, image, description, website, social_media} = req.body
+  try {
+    const location = await Location.findOne({ where: { id }})
+    location.name = name
+    location.category = category
+    location.address = address
+    location.postal_code = postal_code
+    location.city = city
+    location.state = state
+    location.country = country
+    location.image = image
+    location.description = description
+    location.website = website
+    location.social_media = social_media
+    
+    await location.save()
+
+    return res.json(location)
+    } catch (err) {
+    console.log(err)
+    return res.status(500).json({error: 'something went wrong'})
+  }
+}
+
+
+
+module.exports = { test, register, getById, deleteById, modifyById };
