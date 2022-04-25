@@ -21,6 +21,7 @@ const register = async (req, res) => {
     rate,
     website,
     social_media,
+    owner_id,
   } = req.body;
 
   try {
@@ -39,6 +40,7 @@ const register = async (req, res) => {
       rate,
       website,
       social_media,
+      owner_id
     });
 
     return res.json(location);

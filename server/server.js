@@ -10,7 +10,7 @@ const util = require('util')
 const unlinkFile = util.promisify(fs.unlink)
 const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
-const { uploadFile, getFileStream } = require('./s3')
+const { uploadFile, getFileStream } = require("./controllers/s3")
 
 require("dotenv").config();
 const app = express();
@@ -41,6 +41,7 @@ app.post("/ratings", async (req, res) => Rating.register(req, res));
 //event
 const Event = require("./controllers/event");
 app.post("/events", async (req, res) => Event.register(req, res));
+app.post("/api/events/create", async (req, res) => Event.register(req, res));
 
 // administrator
 const Administrator = require("./controllers/administrator");
@@ -68,6 +69,7 @@ app.get("/api/profile", validateToken, async (req, res) =>
 );
 
 const Structure = require("./controllers/structure");
+const { ApiGatewayManagementApi } = require("aws-sdk");
 app.post("/api/structure/create/owner", async (req, res) =>
   Structure.register_owner(req, res)
 );

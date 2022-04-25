@@ -1,4 +1,5 @@
 import styles from "./Events.module.scss";
+import { Link } from "react-router-dom";
 
 import { ReactComponent as Plus } from "../../../../assets/icons/plus.svg";
 import { useState } from "react";
@@ -12,10 +13,10 @@ const Events = () => {
       <section className={styles.section}>
         <header className={`${styles.sectionHead}`}>
           <h3>Vos événements</h3>
-          <button className="primary-btn">
+          <Link className="primary-btn" to="/structures/events/create">
             <span>Ajouter</span>
             <Plus />
-          </button>
+          </Link>
         </header>
         {events ? (
           <div className={styles.eventList}>

@@ -6,10 +6,10 @@ const test = async (req, res) => {
 };
 
 const register = async (req,res) => {
-  const {name, category, image, description, rate, start_datetime, end_datetime, permanent} = req.body
+  const {name, location_id, category, image, description, start_datetime, end_datetime, permanent} = req.body
 
   try{
-    const event = await Event.create({name, category, image, description, rate, start_datetime, end_datetime, permanent})
+    const event = await Event.create({name, location_id, category, image, description, start_datetime, end_datetime, permanent})
   
     return res.json(event)
   }catch(err){
