@@ -2,7 +2,6 @@ import styles from "./Header.module.scss";
 import enFlag from "../../../assets/images/Angleterre.png";
 import esFlag from "../../../assets/images/Espagne.png";
 import frFlag from "../../../assets/images/France.png";
-import MainMenu from "./MainMenu/MainMenu.jsx";
 import useClickedOutside from "../../../hooks/useClickedOutside";
 import useClickedOutside1 from "../../../hooks/useClickedOutside1";
 
@@ -14,10 +13,6 @@ import { useState } from "react";
 const Header = () => {
   const { target, button, isShown, setIsShown } = useClickedOutside();
   const { target1, button1, isShown1, setIsShown1 } = useClickedOutside1();
-  const [navChecked, setNavChecked] = useState(false);
-  console.log(isShown1, "lang");
-  console.log(isShown, "nav");
-  console.log("----");
 
   return (
     <div className={styles.headerContainer}>
@@ -88,9 +83,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className={styles.MainMenu}>
-        <MainMenu />
-      </div>
+     
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Home from "./pages/Home/Home";
+import EspacePro from "./pages/EspacePro/pro";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/system" element={<System />} />
           <Route exact path="/auth/register" element={<Register />} />
           <Route exact path="/auth/login" element={<Login />} />
+          <Route exact path="/espace_professionnel" element={<EspacePro />} />
         </Routes>
       </Router>
     </div>

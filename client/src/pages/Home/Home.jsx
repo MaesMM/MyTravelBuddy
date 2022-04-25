@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-
+import MainMenu from "../../components/shared/Header/MainMenu/MainMenu"
 import { getIcon } from "../../components/shared/Pin/getIcon";
-
+import Place from "../../components/shared/Place/Place";
 import styles from "./Home.module.scss";
+import useClickedOutside2 from "../../hooks/useClickedOutside2";
+
 
 const Home = () => {
   const [position, setPosition] = useState(null);
@@ -13,8 +15,16 @@ const Home = () => {
     );
   }, []);
 
+  const[ isShown, setIsShown] = useState(false);
+  const { target2, button2, isShown2, setIsShown2 } = useClickedOutside2();
+  
+
+
   return (
-    <div>
+    <div className={styles.home}>
+      <div className={styles.MainMenu}>
+        <MainMenu/>
+      </div>
       {position && (
         <MapContainer className={styles.map} center={position} zoom={13}>
           <TileLayer
@@ -25,13 +35,27 @@ const Home = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           /> */}
-          <Marker position={position} icon={getIcon("theater")}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
+          <Marker 
+            ref={button2}
+            position={position} 
+            icon={getIcon("theater")}
+            eventHandlers={{
+              click: () => {
+                setIsShown2(!isShown2)
+                console.log(isShown2)
+                
+            },
+          }}>
+            
           </Marker>
         </MapContainer>
       )}
+        {isShown2 && 
+        <div className={styles.background}>
+          <div className={styles.containerPlace} ref={target2}>
+            <Place/>
+          </div>
+        </div>}
     </div>
   );
 };

@@ -1,5 +1,48 @@
+
+
+
+.home {
+  position: relative;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
 .map {
   width: 100%;
   height: calc(100vh - 80px);
   z-index: 1;
+
 }
+
+@keyframes transitiontest {
+  from { 
+      background-color: rgba($color: #ffffff, $alpha: 0);
+  }
+  to { 
+      background-color: rgba($color: #ffffff, $alpha: 0.7);
+  }
+}
+
+.background{
+  animation: transitiontest 0.5s ;
+  width: 100%;
+
+  inset: 0 0 0 0 ;
+  z-index: 1000;
+  position: absolute;
+  margin: 0;
+  display: flex;
+  padding-top: 40px;
+  justify-content: center;
+  height: 100%;
+  overflow-y: scroll ;
+  padding-bottom: 80px;
+  background-color: rgba($color: #ffffff, $alpha: 0.7);
+  
+}
+
+.containerPlace{
+  width: 60%;
+  padding-bottom: 80px;
+}
+
