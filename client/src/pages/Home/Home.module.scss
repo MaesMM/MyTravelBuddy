@@ -1,10 +1,13 @@
 
-
-
-.home {
-  position: relative;
-  height: calc(100vh - 80px);
-  overflow: hidden;
+  
+  @import "../../styles/variables.scss";
+  
+  .Home {
+    display: flex;
+    position: relative;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+  width: 100%;
 }
 
 .map {
@@ -46,3 +49,36 @@
   padding-bottom: 80px;
 }
 
+<<<<<<< HEAD
+=======
+.mainContent {
+  position: relative;
+  width: 100%;
+}
+
+.message {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 80px);
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.spinner {
+  width: clamp(56px, 7.5%, 160px);
+  aspect-ratio: 1;
+  color: $accent-400;
+  animation: spinner 1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
+}
+>>>>>>> upstream/main

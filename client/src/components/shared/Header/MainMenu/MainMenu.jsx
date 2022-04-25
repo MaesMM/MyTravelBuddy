@@ -13,8 +13,7 @@ const MainMenu = () => {
   // que useEffect ne s’exécutera qu’une fois, un peu comme
   // componentDidMount()
   useEffect(() => {
-
-    axios.get("")
+    axios.get("");
 
     fetch([
       { id: 1, name: "Apples", price: "$2" },

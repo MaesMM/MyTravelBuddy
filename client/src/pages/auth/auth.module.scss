@@ -1,8 +1,13 @@
+.container {
+  justify-content: center;
+}
+
 .title {
   margin-bottom: 40px;
 }
 
-.row {
+.topRow {
+  justify-content: space-between;
   column-gap: 16px;
 }
 
@@ -17,6 +22,10 @@
   row-gap: 4px;
   text-align: center;
   font-size: 0.9rem;
+}
+
+.bottomRow {
+  margin-top: 40px;
 }
 
 @media screen and (max-width: 580px) {

@@ -8,11 +8,17 @@ import useClickedOutside1 from "../../../hooks/useClickedOutside1";
 import { ReactComponent as Arrow } from "../../../assets/icons/arrow.svg";
 
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Header = () => {
   const { target, button, isShown, setIsShown } = useClickedOutside();
   const { target1, button1, isShown1, setIsShown1 } = useClickedOutside1();
+<<<<<<< HEAD
+=======
+
+  console.log(isShown1, "lang");
+  console.log(isShown, "nav");
+  console.log("----");
+>>>>>>> upstream/main
 
   return (
     <div className={styles.headerContainer}>
@@ -20,20 +26,7 @@ const Header = () => {
         <div className={styles.logo}>MyTravelBuddy</div>
 
         <div className={styles.rightHeader}>
-          <span className={styles.donate}>Faire un don</span>
-
-          <div
-            onClick={() => setIsShown1(!isShown1)}
-            ref={button1}
-            className={styles.countriesSelection}
-          >
-            <div className={`${styles.lang} ${isShown1 && styles.rotate}`}>
-              <img className={styles.flag} src={frFlag} />
-              <span>FR</span>
-              <Arrow />
-            </div>
-          </div>
-
+          <span className={styles.donate}>S'identifier</span>
           <div
             onClick={() => setIsShown(!isShown)}
             ref={button}
@@ -49,41 +42,28 @@ const Header = () => {
       </header>
 
       <div
-        ref={target1}
-        className={`${styles.Languages} ${isShown1 && styles.isShown1}`}
-      >
-        <div className={styles.choiceLanguage}>
-          <img className={styles.flag} src={frFlag} />
-          <span>FR</span>
-        </div>
-        <div className={styles.choiceLanguage}>
-          <img className={styles.flag} src={enFlag} />
-          <span>EN</span>
-        </div>
-        <div className={styles.choiceLanguage}>
-          <img className={styles.flag} src={esFlag} />
-          <span>ES</span>
-        </div>
-      </div>
-
-      <div
         ref={target}
         className={`${styles.navHeader} ${isShown && styles.isShown}`}
       >
         <div className={styles.menu}>
-          <a className="primary-btn full-width" href="identifier">
-            S'identifier
-          </a>
+          <Link to="/auth/login" onClick={() => setIsShown(false)}>
+            <span className="primary-btn full-width">S'identifier</span>
+          </Link>
 
           <a href="contacter">Contacter</a>
 
-          <a href="espace_professionnel">Espace professionnel</a>
+          <Link to="/structures/">
+            <span>Espace professionnel</span>
+          </Link>
 
           <a href="mentions_légales">Mentions légales</a>
         </div>
       </div>
+<<<<<<< HEAD
 
      
+=======
+>>>>>>> upstream/main
     </div>
   );
 };

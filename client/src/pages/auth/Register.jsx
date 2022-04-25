@@ -42,7 +42,7 @@ const Register = () => {
       <form onSubmit={handleSubmit(onSubmitHandler)} className={styles.form}>
         <h2 className={styles.title}>Créer un compte</h2>
 
-        <div className={`row ${styles.row}`}>
+        <div className={`row full-width ${styles.topRow}`}>
           <div className="form-group">
             <label className="label">Nom :</label>
             <input
@@ -52,7 +52,9 @@ const Register = () => {
               placeholder="Nom"
               className="input"
             />
-            <p className="error">{errors.name?.message}</p>
+            {errors.name?.message && (
+              <p className="error">{errors.name?.message}</p>
+            )}
           </div>
           <div className="form-group">
             <label className="label">Prénom :</label>
@@ -63,7 +65,9 @@ const Register = () => {
               placeholder="Prénom"
               className="input"
             />
-            <p className="error">{errors.firstname?.message}</p>
+            {errors.firstname?.message && (
+              <p className="error">{errors.firstname?.message}</p>
+            )}
           </div>
         </div>
         <div className="form-group">
