@@ -1,6 +1,6 @@
 const Create = () => {
   return (
-    <div>
+    <div className="structurePage">
       <h2>Créer un événement</h2>
     </div>
   );

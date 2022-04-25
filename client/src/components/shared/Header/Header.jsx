@@ -40,7 +40,7 @@ const Header = () => {
       >
         <div className={styles.menu}>
           <Link to="/auth/login" onClick={() => setIsShown(false)}>
-            <span className="primary-btn full-width">S'identifier</span>
+            <div className="primary-btn full-width">S'identifier</div>
           </Link>
 
           <a href="contacter">Contacter</a>
@@ -48,11 +48,11 @@ const Header = () => {
           <Link to="/structures/">
             <span>Espace professionnel</span>
           </Link>
-
-          <a href="mentions_légales">Mentions légales</a>
+          <Link to="/mentions_légales/">
+            <span>Mentions légales</span>
+          </Link>
         </div>
       </div>
-
     </div>
   );
 };
