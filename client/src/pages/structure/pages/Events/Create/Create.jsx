@@ -15,7 +15,8 @@ const Create = () => {
 
   return (
     <div>
-      <h2>Créer un événement</h2>
+      <h2 className={styles.pageTitle}>Créer un événement</h2>
+
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 
         <label className="form-group">

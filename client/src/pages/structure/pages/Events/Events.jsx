@@ -2,10 +2,18 @@ import styles from "./Events.module.scss";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Plus } from "../../../../assets/icons/plus.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import api from "../../../../services/api";
 
 const Events = () => {
-  const [events, setEvents] = useState(true);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    api.get(`/events`).then((res) => {
+      setEvents(res.data)
+    }).catch((err) => console.log(err))
+  }, []);
 
   return (
     <div className={styles.structurePage}>
@@ -18,11 +26,9 @@ const Events = () => {
             <Plus />
           </Link>
         </header>
-        {events ? (
+        {events.length > 0 ? (
           <div className={styles.eventList}>
-            <div className={styles.event}></div>
-            <div className={styles.event}></div>
-            <div className={styles.event}></div>
+            {events.map((event) => <div className={styles.event}>{event.name}</div>)}
           </div>
         ) : (
           <span>Vous n'avez créé aucun événement</span>

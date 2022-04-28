@@ -83,15 +83,24 @@ const Event = require("./controllers/event");
 app.post("/events", async (req, res) => Event.register(req, res));
 app.post("/api/events/create", async (req, res) => Event.register(req, res));
 
-app.get("/events/:id", async (req, res) => {
-  Event.getById(req, res);
-});
 
-app.delete("/events/:id", async (req, res) => {
+app.delete("/api/events/delete/:id", async (req, res) => {
   Event.deleteById(req, res);
 });
 
-app.put("/events/:id", async (req, res) => {
+app.get("/api/events/", async (req, res) => {
+  Event.getAll(req, res);
+});
+
+app.get("/api/location/:location:id/events/", async (req, res) => {
+  Event.getByLocationId(req, res);
+});
+
+app.get("/api/events/:id", async (req, res) => {
+  Event.getById(req, res);
+});
+
+app.put("/api/events/:id", async (req, res) => {
   Event.modifyById(req, res);
 });
 
@@ -167,8 +176,6 @@ app.get("/api/structure/getInfo", async (req, res) =>
   Structure.getInfo(req, res)
 );
 
-
-
 // s3 handler
 app.get('/images/:key', (req, res) => {
   console.log(req.params)
@@ -198,6 +205,6 @@ app.post('/images', upload.single('image'), async (req, res) => {
 
 app.listen({ port: PORT }, async () => {
   console.log("Connecting...");
-  await sequelize.sync({ alter: true });
-  console.log("Running on port 8080 !");
+  await sequelize.sync();
+  console.log(`Running on port ${process.env.PORT} !`);
 });

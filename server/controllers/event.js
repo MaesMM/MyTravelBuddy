@@ -18,6 +18,29 @@ const register = async (req,res) => {
   }
 }
 
+const getAll = async (req, res) => {
+  try {
+    const events_list = await Event.findAll();
+    return res.json(events_list);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({error: "something went wrong but god knows what did"});
+  }
+}
+
+const getByLocationId = async (req, res) => {
+  const location_id = req.params.location_id;
+  try {
+    // add filter by location ID
+    const events_list = await Event.findAll({
+      where: {location_id}
+    });
+    return res.json(events_list);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({error: "something went wrong but god knows what did"});
+  }
+}
 
 const getById = async (req,res) => {
   const id = req.params.id
@@ -64,4 +87,4 @@ const modifyById = async (req,res) => {
     return res.status(500).json({error: 'something went wrong'})
   }
 }
-module.exports = { test, register, getById, deleteById, modifyById };
+module.exports = { test, register, getById, deleteById, modifyById, getByLocationId, getAll };
