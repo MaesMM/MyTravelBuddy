@@ -5,6 +5,7 @@ import { ReactComponent as Plus } from "../../../../assets/icons/plus.svg";
 import { useEffect, useState } from "react";
 
 import api from "../../../../services/api";
+import EventCard from '../Events/EventCard/EventCard'
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -28,7 +29,7 @@ const Events = () => {
         </header>
         {events.length > 0 ? (
           <div className={styles.eventList}>
-            {events.map((event) => <div className={styles.event}>{event.name}</div>)}
+            {events.map((event) => <EventCard data={event}/>)}
           </div>
         ) : (
           <span>Vous n'avez créé aucun événement</span>
