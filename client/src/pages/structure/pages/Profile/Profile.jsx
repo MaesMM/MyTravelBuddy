@@ -30,7 +30,7 @@ const EspacePro = () => {
   };
 
   return (
-    <div className={styles.structurePage}>
+    <div className="structurePage">
       <h2 className={styles.pageTitle}>Profil Public</h2>
       <div className={styles.content}>
         <h3>Nom : </h3>

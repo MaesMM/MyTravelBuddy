@@ -11,7 +11,7 @@ const Navbar = () => {
             `${styles.link} ${isActive ? styles.active : null}`
           }
         >
-          <span>Tableau de bord</span>
+          Tableau de bord
         </NavLink>
 
         <NavLink

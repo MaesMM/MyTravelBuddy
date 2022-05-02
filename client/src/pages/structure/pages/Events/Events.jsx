@@ -17,7 +17,7 @@ const Events = () => {
   }, []);
 
   return (
-    <div className={styles.structurePage}>
+    <div className="structurePage">
       <h2 className={styles.pageTitle}>Événements</h2>
       <section className={styles.section}>
         <header className={`${styles.sectionHead}`}>

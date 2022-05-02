@@ -2,7 +2,7 @@ import styles from "../../Structure.module.scss";
 
 const Settings = () => {
   return (
-    <div>
+    <div className="structurePage">
       <h2 className={styles.pageTitle}>Paramètres</h2>
     </div>
   );
