@@ -7,7 +7,7 @@ const Events = () => {
   const [events, setEvents] = useState(true);
 
   return (
-    <div>
+    <div className="structurePage">
       <h2 className={styles.pageTitle}>Événements</h2>
       <section className={styles.section}>
         <header className={`${styles.sectionHead}`}>

@@ -33,8 +33,8 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email: email } });
 
-  if (!user) res.status(400).json({ error: "Email not assigned !" });
-
+  if (!user) return res.status(400).json({ error: "Email not assigned !" });
+  console.log(user);
   const dbPassword = user.password;
   bcrypt.compare(password, dbPassword).then((match) => {
     if (!match) {

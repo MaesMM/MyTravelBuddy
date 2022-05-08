@@ -163,6 +163,6 @@ app.get("/api/structure/getInfo", async (req, res) =>
 
 app.listen({ port: PORT }, async () => {
   console.log("Connecting...");
-  await sequelize.sync({ alter: true });
+  await sequelize.sync();
   console.log("Running on port 8080 !");
 });

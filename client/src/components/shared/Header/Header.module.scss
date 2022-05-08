@@ -22,7 +22,7 @@
   align-items: center;
   padding: 0 5%;
   width: 100%;
-  z-index: 100;
+  z-index: 10000;
   box-sizing: border-box;
   height: 80px;
   background-color: white;
@@ -32,6 +32,7 @@
 .logo {
   font-size: 1.6em;
   font-weight: 700;
+  text-decoration: none;
 }
 
 .rotate svg {
@@ -44,6 +45,7 @@
   color: #c4c4c4;
   user-select: none;
   cursor: pointer;
+
   span {
     font-size: 1.2em;
     font-weight: 600;
@@ -143,6 +145,10 @@
   padding: 32px 0;
   a {
     text-decoration: none;
+  }
+
+  span {
+    padding: 0;
   }
 }
 

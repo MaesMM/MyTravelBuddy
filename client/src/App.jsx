@@ -1,10 +1,11 @@
-import Header from "./components/shared/Header/Header";
 import System from "./styles/system/System";
+import Header from "./components/shared/Header/Header";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Home from "./pages/Home/Home";
+
 import StructureLayout from "./pages/structure/StructureLayout";
 import Dashboard from "./pages/structure/pages/Dashboard/Dashboard";
 import Profile from "./pages/structure/pages/Profile/Profile";
