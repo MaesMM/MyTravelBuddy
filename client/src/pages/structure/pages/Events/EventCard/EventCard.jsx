@@ -12,11 +12,14 @@ const EventCard = ({ data }) => {
         }).catch((err) => console.log(err));
     }
 
-    return <button className={styles.event} onClick={() => onClick()}>
-        <h2> {data.id} </h2>
-        <img className={cardStyle.image} src={data.image} alt="img" />
-        <h3> {data.name} </h3>
-    </button>;
+    return <article className={cardStyle.card} onClick={() => onClick()}>
+        <div className={cardStyle.imgContainer}>
+            <img className={cardStyle.image} src={data.image} alt="img" />
+        </div>
+        <div className={cardStyle.content}>
+        <h3 className={cardStyle.title}> {data.name} </h3>
+        </div>
+    </article>;
 };
 
 export default EventCard;
