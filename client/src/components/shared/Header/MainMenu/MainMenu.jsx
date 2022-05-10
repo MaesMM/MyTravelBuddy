@@ -39,7 +39,7 @@ const MainMenu = () => {
     <div className={styles.Menu}>
       <div className={styles.MenuTitle}>
         <h3>
-          En ce moment à <span className="underline">Lille</span>
+          En ce moment à <span className={styles.cityName}>Lille</span>
         </h3>
         {items.map((item) => (
           <li>
@@ -54,28 +54,67 @@ const MainMenu = () => {
         <div className={styles.BorderScroll}>
           <ScrollContainer className="scroll-container">
             <div className={styles.TendancesAffiche}>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+            </div>
+          </ScrollContainer>
+        </div>
+      </div>
+      <div className={styles.trend}>
+        <div className={styles.SectionTitle}>
+          <h4>Expositions</h4>
+        </div>
+        <div className={styles.BorderScroll}>
+          <ScrollContainer className="scroll-container">
+            <div className={styles.TendancesAffiche}>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+            </div>
+          </ScrollContainer>
+        </div>
+      </div>
+      <div className={styles.trend}>
+        <div className={styles.SectionTitle}>
+          <h4>Spectacles</h4>
+        </div>
+        <div className={styles.BorderScroll}>
+          <ScrollContainer className="scroll-container">
+            <div className={styles.TendancesAffiche}>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+            </div>
+          </ScrollContainer>
+        </div>
+      </div>
+      <div className={styles.trend}>
+        <div className={styles.SectionTitle}>
+          <h4>Concerts</h4>
+        </div>
+        <div className={styles.BorderScroll}>
+          <ScrollContainer className="scroll-container">
+            <div className={styles.TendancesAffiche}>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
             </div>
           </ScrollContainer>
         </div>
@@ -87,24 +126,13 @@ const MainMenu = () => {
         <div className={styles.BorderScroll}>
           <ScrollContainer className="scroll-container">
             <div className={styles.TendancesAffiche}>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
             </div>
           </ScrollContainer>
         </div>
@@ -116,111 +144,13 @@ const MainMenu = () => {
         <div className={styles.BorderScroll}>
           <ScrollContainer className="scroll-container">
             <div className={styles.TendancesAffiche}>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-            </div>
-          </ScrollContainer>
-        </div>
-      </div>
-      <div className={styles.trend}>
-        <div className={styles.SectionTitle}>
-          <h4>Tendances</h4>
-        </div>
-        <div className={styles.BorderScroll}>
-          <ScrollContainer className="scroll-container">
-            <div className={styles.TendancesAffiche}>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-            </div>
-          </ScrollContainer>
-        </div>
-      </div>
-      <div className={styles.trend}>
-        <div className={styles.SectionTitle}>
-          <h4>Tendances</h4>
-        </div>
-        <div className={styles.BorderScroll}>
-          <ScrollContainer className="scroll-container">
-            <div className={styles.TendancesAffiche}>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-            </div>
-          </ScrollContainer>
-        </div>
-      </div>
-      <div className={styles.trend}>
-        <div className={styles.SectionTitle}>
-          <h4>Tendances</h4>
-        </div>
-        <div className={styles.BorderScroll}>
-          <ScrollContainer className="scroll-container">
-            <div className={styles.TendancesAffiche}>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
-              <div className={styles.Affiche}>
-                <div className={styles.formeAffiche}></div>
-              </div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}></div>
             </div>
           </ScrollContainer>
         </div>

@@ -1,0 +1,24 @@
+@import "../../../styles/variables.scss";
+
+.pin {
+  width: 100%;
+  height: 100%;
+}
+
+.userLoc {
+  position: relative;
+  z-index: 2;
+
+  &::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    border-radius: 100%;
+    inset: 0;
+    width: 16px;
+    height: 16px;
+    background-color: $text-800;
+    outline: 4px solid rgba($color: $text-600, $alpha: 0.25) !important;
+    box-sizing: content-box;
+  }
+}

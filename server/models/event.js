@@ -27,10 +27,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT ,
       },
       rate: {
         type: DataTypes.FLOAT,
+        allowNull: true,
       },
       start_datetime: {
         type: DataTypes.STRING,
@@ -40,6 +41,18 @@ module.exports = (sequelize, DataTypes) => {
       },
       permanent: {
         type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+      adresse: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      latitude: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      longitude: {
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
     },

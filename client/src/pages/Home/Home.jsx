@@ -6,7 +6,7 @@ import { ReactComponent as Spinner } from "../../assets/icons/spin.svg";
 
 import api from "../../services/api";
 
-import { getIcon } from "../../components/shared/Pin/getIcon";
+import { getIcon, currentLocation } from "../../components/shared/Pin/getIcon";
 import Place from "../../components/shared/Place/Place";
 import styles from "./Home.module.scss";
 import useClickedOutside2 from "../../hooks/useClickedOutside2";
@@ -24,16 +24,19 @@ const Home = () => {
   });
 
   useEffect(() => {
-    // get and display locations
-    api.get(`locations/getAll`).then((res) => {
-      setLocations(res.data)
-      console.log(res)
-    }).catch((err) => console.log(err))
-
     navigator.geolocation.getCurrentPosition((geoloc) =>
       setPosition([geoloc.coords.latitude, geoloc.coords.longitude])
     );
-    console.log(position);
+  }, []);
+  useEffect(() => {
+    // get and display locations
+    api
+      .get(`locations/getAll`)
+      .then((res) => {
+        setLocations(res.data);
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const [isShown, setIsShown] = useState(false);
@@ -53,41 +56,38 @@ const Home = () => {
               />
 
               <Marker
-                ref={button2}
                 position={position}
+                icon={currentLocation("user")}
+              ></Marker>
+              <Marker
+                ref={button2}
+                position={[position[0], position[1]]}
                 icon={getIcon("theater")}
                 eventHandlers={{
                   click: () => {
                     setIsShown2(!isShown2);
-                    console.log(isShown2);
                   },
                 }}
-              >
-                {/* <Popup>
-                  A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup> */}
-              </Marker>
+              ></Marker>
 
               {/* Display Locations */}
 
               {locations.map((data) => (
                 <Marker
-                ref={button2}
-                position={[data.latitude, data.longitude]}
-                icon={getIcon("theater")}
-                eventHandlers={{
-                  click: () => {
-                    setIsShown2(!isShown2);
-                    console.log(isShown2);
-                  },
-                }}
-              >
-                {/* <Popup>
+                  ref={button2}
+                  position={[data.latitude, data.longitude]}
+                  icon={getIcon("theater")}
+                  eventHandlers={{
+                    click: () => {
+                      setIsShown2(!isShown2);
+                    },
+                  }}
+                >
+                  {/* <Popup>
                   A pretty CSS3 popup. <br /> Easily customizable.
                 </Popup> */}
-              </Marker>
+                </Marker>
               ))}
-
             </MapContainer>
             {isShown2 && (
               <div className={styles.background}>
