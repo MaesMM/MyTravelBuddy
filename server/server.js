@@ -5,12 +5,12 @@ const { sequelize } = require("./models");
 const { validateToken } = require("./controllers/JWT");
 
 // s3 Packages
-const fs = require('fs')
-const util = require('util')
-const unlinkFile = util.promisify(fs.unlink)
-const multer = require('multer')
-const upload = multer({ dest: 'uploads/' })
-const { uploadFile, getFileStream } = require("./controllers/s3")
+const fs = require("fs");
+const util = require("util");
+const unlinkFile = util.promisify(fs.unlink);
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+const { uploadFile, getFileStream } = require("./controllers/s3");
 
 require("dotenv").config();
 const app = express();
@@ -87,12 +87,13 @@ app.get("/moyennes/:location_id", async (req, res) => {
 const Event = require("./controllers/event");
 app.post("/events", async (req, res) => Event.register(req, res));
 
+app.post("/getEventData", async (req, res) => Event.ApiRegister(req, res));
+
 //multer image bullshit
 
 app.post("/api/events/create", upload.single("image"), async (req, res) => {
   Event.register(req, res);
 });
-
 
 app.delete("/api/events/delete/:id", async (req, res) => {
   Event.deleteById(req, res);
@@ -187,29 +188,28 @@ app.get("/api/structure/getInfo", async (req, res) =>
 );
 
 // s3 handler
-app.get('/images/:key', (req, res) => {
-  console.log(req.params)
-  const key = req.params.key
-  const readStream = getFileStream(key)
+app.get("/images/:key", (req, res) => {
+  console.log(req.params);
+  const key = req.params.key;
+  const readStream = getFileStream(key);
 
-  readStream.pipe(res)
-})
+  readStream.pipe(res);
+});
 
-app.post('/api/images', upload.single('image'), async (req, res) => {
-  const file = req.file
-  console.log(file)
+app.post("/api/images", upload.single("image"), async (req, res) => {
+  const file = req.file;
+  console.log(file);
 
   // apply filter
-  // resize 
+  // resize
 
-  const result = await uploadFile(file)
-  await unlinkFile(file.path)
-  console.log("dababy", result)
-  const description = req.body.description
-  res.send( result.Location )
-})
+  const result = await uploadFile(file);
+  await unlinkFile(file.path);
+  console.log("dababy", result);
+  const description = req.body.description;
+  res.send(result.Location);
+});
 // s3 end
-
 
 // Start Server
 
