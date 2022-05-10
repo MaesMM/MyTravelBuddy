@@ -1,0 +1,55 @@
+.form {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    max-width: 32.5em;
+    gap: 16px;
+    margin: 0 !important;
+}
+
+.buttons {
+    width: 100%;
+    column-gap: 12px;
+}
+
+.textarea {
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.checkBox {
+    min-width: 50px;
+    max-width: 50px;
+    flex: 1;
+}
+
+.section {
+    width: 0px;
+    flex: 1;
+}
+
+.sectionSmall {
+    width: 0px;
+    flex: .5;
+}
+
+.secondary {
+    margin: 0;
+}
+
+.ImageInput {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background-color: white;
+
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+    input {
+        display: none;
+    }
+}

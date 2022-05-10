@@ -31,7 +31,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       rate: {
         type: DataTypes.FLOAT,
-        allowNull: true,
       },
       start_datetime: {
         type: DataTypes.STRING,

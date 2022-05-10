@@ -6,10 +6,24 @@ const test = async (req, res) => {
 };
 
 const register = async (req,res) => {
-  const {location_id, name, category, image, description, rate, start_datetime, end_datetime, permanent} = req.body
+  // console.log("files", req.file);
+  // console.log("body", req.body);
+
+  // const file = req.file
+  // console.log(file)
+
+  // // apply filter
+  // // resize 
+
+  // const result = await uploadFile(file)
+  // await unlinkFile(file.path)
+  // console.log(result)
+  // image = "4"
+
+  const {name, location_id, category, description, image, start_datetime, end_datetime, permanent} = req.body
 
   try{
-    const event = await Event.create({location_id, name, category, image, description, rate, start_datetime, end_datetime, permanent})
+    const event = await Event.create({name, location_id, category, image, description, start_datetime, end_datetime, permanent})
   
     return res.json(event)
   }catch(err){
@@ -18,6 +32,29 @@ const register = async (req,res) => {
   }
 }
 
+const getAll = async (req, res) => {
+  try {
+    const events_list = await Event.findAll();
+    return res.json(events_list);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({error: "something went wrong but god knows what did"});
+  }
+}
+
+const getByLocationId = async (req, res) => {
+  const location_id = req.params.location_id;
+  try {
+    // add filter by location ID
+    const events_list = await Event.findAll({
+      where: {location_id}
+    });
+    return res.json(events_list);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({error: "something went wrong but god knows what did"});
+  }
+}
 
 const getById = async (req,res) => {
   const id = req.params.id
@@ -64,4 +101,4 @@ const modifyById = async (req,res) => {
     return res.status(500).json({error: 'something went wrong'})
   }
 }
-module.exports = { test, register, getById, deleteById, modifyById };
+module.exports = { test, register, getById, deleteById, modifyById, getByLocationId, getAll };

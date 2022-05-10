@@ -1,8 +1,17 @@
 const express = require("express");
-const { sequelize } = require("./models");
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
+const { sequelize } = require("./models");
 const { validateToken } = require("./controllers/JWT");
+
+// s3 Packages
+const fs = require('fs')
+const util = require('util')
+const unlinkFile = util.promisify(fs.unlink)
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
+const { uploadFile, getFileStream } = require("./controllers/s3")
+
 require("dotenv").config();
 const app = express();
 
@@ -13,6 +22,7 @@ var corsOptions = {
 // Middlewares
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const PORT = process.env.PORT;
@@ -36,6 +46,10 @@ app.put("/users/:id", async (req, res) => {
 //location
 const Location = require("./controllers/location");
 app.post("/locations", async (req, res) => Location.register(req, res));
+
+app.get("/api/locations/getAll", async (req, res) => {
+  Location.getAllLocations(req, res);
+});
 
 app.get("/locations/:id", async (req, res) => {
   Location.getById(req, res);
@@ -73,15 +87,30 @@ app.get("/moyennes/:location_id", async (req, res) => {
 const Event = require("./controllers/event");
 app.post("/events", async (req, res) => Event.register(req, res));
 
-app.get("/events/:id", async (req, res) => {
-  Event.getById(req, res);
+//multer image bullshit
+
+app.post("/api/events/create", upload.single("image"), async (req, res) => {
+  Event.register(req, res);
 });
 
-app.delete("/events/:id", async (req, res) => {
+
+app.delete("/api/events/delete/:id", async (req, res) => {
   Event.deleteById(req, res);
 });
 
-app.put("/events/:id", async (req, res) => {
+app.get("/api/events/", async (req, res) => {
+  Event.getAll(req, res);
+});
+
+app.get("/api/location/:location:id/events/", async (req, res) => {
+  Event.getByLocationId(req, res);
+});
+
+app.get("/api/events/:id", async (req, res) => {
+  Event.getById(req, res);
+});
+
+app.put("/api/events/:id", async (req, res) => {
   Event.modifyById(req, res);
 });
 
@@ -146,6 +175,7 @@ app.get("/api/profile", validateToken, async (req, res) =>
 );
 
 const Structure = require("./controllers/structure");
+const { ApiGatewayManagementApi } = require("aws-sdk");
 app.post("/api/structure/create/owner", async (req, res) =>
   Structure.register_owner(req, res)
 );
@@ -156,10 +186,35 @@ app.get("/api/structure/getInfo", async (req, res) =>
   Structure.getInfo(req, res)
 );
 
+// s3 handler
+app.get('/images/:key', (req, res) => {
+  console.log(req.params)
+  const key = req.params.key
+  const readStream = getFileStream(key)
+
+  readStream.pipe(res)
+})
+
+app.post('/api/images', upload.single('image'), async (req, res) => {
+  const file = req.file
+  console.log(file)
+
+  // apply filter
+  // resize 
+
+  const result = await uploadFile(file)
+  await unlinkFile(file.path)
+  console.log("dababy", result)
+  const description = req.body.description
+  res.send( result.Location )
+})
+// s3 end
+
+
 // Start Server
 
 app.listen({ port: PORT }, async () => {
   console.log("Connecting...");
   await sequelize.sync();
-  console.log("Running on port 8080 !");
+  console.log(`Running on port ${process.env.PORT} !`);
 });

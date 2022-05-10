@@ -2,13 +2,14 @@
 
 .eventList {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
 }
 
 .event {
   width: 128px;
   height: 188px;
-  background-color: red;
+  background-color: $primary-900;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;

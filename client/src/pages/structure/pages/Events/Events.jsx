@@ -1,10 +1,20 @@
 import styles from "./Events.module.scss";
+import { Link } from "react-router-dom";
 
 import { ReactComponent as Plus } from "../../../../assets/icons/plus.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import api from "../../../../services/api";
+import EventCard from '../Events/EventCard/EventCard'
 
 const Events = () => {
-  const [events, setEvents] = useState(true);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    api.get(`/events`).then((res) => {
+      setEvents(res.data)
+    }).catch((err) => console.log(err))
+  }, []);
 
   return (
     <div className="structurePage">
@@ -12,16 +22,14 @@ const Events = () => {
       <section className={styles.section}>
         <header className={`${styles.sectionHead}`}>
           <h3>Vos événements</h3>
-          <button className="primary-btn">
+          <Link className="primary-btn" to="/structures/events/create">
             <span>Ajouter</span>
             <Plus />
-          </button>
+          </Link>
         </header>
-        {events ? (
+        {events.length > 0 ? (
           <div className={styles.eventList}>
-            <div className={styles.event}></div>
-            <div className={styles.event}></div>
-            <div className={styles.event}></div>
+            {events.map((event) => <EventCard data={event}/>)}
           </div>
         ) : (
           <span>Vous n'avez créé aucun événement</span>
