@@ -6,7 +6,21 @@ const test = async (req, res) => {
 };
 
 const register = async (req,res) => {
-  const {name, location_id, category, image, description, start_datetime, end_datetime, permanent} = req.body
+  // console.log("files", req.file);
+  // console.log("body", req.body);
+
+  // const file = req.file
+  // console.log(file)
+
+  // // apply filter
+  // // resize 
+
+  // const result = await uploadFile(file)
+  // await unlinkFile(file.path)
+  // console.log(result)
+  // image = "4"
+
+  const {name, location_id, category, description, image, start_datetime, end_datetime, permanent} = req.body
 
   try{
     const event = await Event.create({name, location_id, category, image, description, start_datetime, end_datetime, permanent})

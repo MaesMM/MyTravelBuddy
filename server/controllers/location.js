@@ -64,6 +64,15 @@ const getById = async (req, res) => {
   }
 };
 
+const getAllLocations = async (req, res) => {
+  try {
+    const locations = await Location.findAll();
+    return res.json(locations);
+  } catch (err) {
+    return res.status(500).json({ error: "Couldn't get all locations"});
+  }
+};
+
 const deleteById = async (req, res) => {
   const id = req.params.id;
   try {
@@ -115,4 +124,4 @@ const modifyById = async (req, res) => {
   }
 };
 
-module.exports = { test, register, getById, deleteById, modifyById };
+module.exports = { test, register, getById, deleteById, modifyById, getAllLocations };

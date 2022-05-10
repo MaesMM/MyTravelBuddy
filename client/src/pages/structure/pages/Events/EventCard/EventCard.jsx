@@ -13,7 +13,9 @@ const EventCard = ({ data }) => {
     }
 
     return <button className={styles.event} onClick={() => onClick()}>
-        {data.name}
+        <h2> {data.id} </h2>
+        <img className={cardStyle.image} src={data.image} alt="img" />
+        <h3> {data.name} </h3>
     </button>;
 };
 

@@ -22,6 +22,7 @@ var corsOptions = {
 // Middlewares
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const PORT = process.env.PORT;
@@ -45,6 +46,10 @@ app.put("/users/:id", async (req, res) => {
 //location
 const Location = require("./controllers/location");
 app.post("/locations", async (req, res) => Location.register(req, res));
+
+app.get("/api/locations/getAll", async (req, res) => {
+  Location.getAllLocations(req, res);
+});
 
 app.get("/locations/:id", async (req, res) => {
   Location.getById(req, res);
@@ -81,7 +86,12 @@ app.get("/moyennes/:location_id", async (req, res) => {
 //event
 const Event = require("./controllers/event");
 app.post("/events", async (req, res) => Event.register(req, res));
-app.post("/api/events/create", async (req, res) => Event.register(req, res));
+
+//multer image bullshit
+
+app.post("/api/events/create", upload.single("image"), async (req, res) => {
+  Event.register(req, res);
+});
 
 
 app.delete("/api/events/delete/:id", async (req, res) => {
@@ -185,7 +195,7 @@ app.get('/images/:key', (req, res) => {
   readStream.pipe(res)
 })
 
-app.post('/images', upload.single('image'), async (req, res) => {
+app.post('/api/images', upload.single('image'), async (req, res) => {
   const file = req.file
   console.log(file)
 
@@ -194,9 +204,9 @@ app.post('/images', upload.single('image'), async (req, res) => {
 
   const result = await uploadFile(file)
   await unlinkFile(file.path)
-  console.log(result)
+  console.log("dababy", result)
   const description = req.body.description
-  res.send({imagePath: `/images/${result.Key}`})
+  res.send( result.Location )
 })
 // s3 end
 
