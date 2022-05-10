@@ -74,7 +74,7 @@ const Event = require("./controllers/event");
 app.post("/events", async (req, res) => Event.register(req, res));
 app.post("/test", async (req, res) => Event.test(req, res));
 
-app.post("/testevent", async (req, res) => Event.apicall(req, res));
+app.post("/getEventsData", async (req, res) => Event.ApiRegister(req, res));
 
 app.get("/events/:id", async (req, res) => {
   Event.getById(req, res);
@@ -159,10 +159,10 @@ app.get("/api/structure/getInfo", async (req, res) =>
   Structure.getInfo(req, res)
 );
 
-// Start Server
+// Start Server 
 
 app.listen({ port: PORT }, async () => {
   console.log("Connecting...");
-  await sequelize.sync();
+  await sequelize.sync({alter:true});
   console.log("Running on port 8080 !");
 });
