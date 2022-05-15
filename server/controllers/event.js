@@ -21,6 +21,17 @@ const apicall = async () => {
   }
 };
 
+const getAll = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const events = await Event.findAll();
+    return res.json(events);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "something went wrong" });
+  }
+}; 
+
 const ApiRegister = async (req, res) => {
   try {
     let json = await apicall();
@@ -70,6 +81,9 @@ const register = async (req, res) => {
     start_datetime,
     end_datetime,
     permanent,
+    adresse,
+    latitude,
+    longitude,
   } = req.body;
   try {
     const event = await Event.create({
@@ -82,6 +96,9 @@ const register = async (req, res) => {
       start_datetime,
       end_datetime,
       permanent,
+      adresse,
+      latitude,
+      longitude,
     });
 
     return res.json(event);
@@ -143,4 +160,5 @@ module.exports = {
   getById,
   deleteById,
   modifyById,
+  getAll
 };

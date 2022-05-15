@@ -210,6 +210,7 @@ app.post('/api/images', upload.single('image'), async (req, res) => {
 })
 // s3 end
 
+app.post('/getEventsData', async (req, res) => Event.ApiRegister(req, res));
 
 // Start Server
 
