@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import styles from "./MainMenu.module.scss";
 import ScrollContainer from "react-indiana-drag-scroll";
 
+import image1 from "../../../../assets/images/events/yee.jpg";
+import image2 from "../../../../assets/images/events/yee2.jpg";
+import image3 from "../../../../assets/images/events/yee3.jpg";
+import image4 from "../../../../assets/images/events/yee4.jpg";
+
 import axios from "axios";
 
 const MainMenu = () => {
@@ -54,8 +59,12 @@ const MainMenu = () => {
         <div className={styles.BorderScroll}>
           <ScrollContainer className="scroll-container">
             <div className={styles.TendancesAffiche}>
-              <div className={styles.formeAffiche}></div>
-              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}>
+                <img src={image2} alt="image1" />
+              </div>
+              <div className={styles.formeAffiche}>
+                <img src={image3} alt="image3" />
+              </div>
               <div className={styles.formeAffiche}></div>
               <div className={styles.formeAffiche}></div>
               <div className={styles.formeAffiche}></div>
@@ -72,8 +81,12 @@ const MainMenu = () => {
         <div className={styles.BorderScroll}>
           <ScrollContainer className="scroll-container">
             <div className={styles.TendancesAffiche}>
-              <div className={styles.formeAffiche}></div>
-              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}>
+                <img src={image1} alt="image1" />
+              </div>
+              <div className={styles.formeAffiche}>
+                <img src={image2} alt="image2" />
+              </div>
               <div className={styles.formeAffiche}></div>
               <div className={styles.formeAffiche}></div>
               <div className={styles.formeAffiche}></div>
@@ -90,8 +103,12 @@ const MainMenu = () => {
         <div className={styles.BorderScroll}>
           <ScrollContainer className="scroll-container">
             <div className={styles.TendancesAffiche}>
-              <div className={styles.formeAffiche}></div>
-              <div className={styles.formeAffiche}></div>
+              <div className={styles.formeAffiche}>
+                <img src={image3} alt="image3" />
+              </div>
+              <div className={styles.formeAffiche}>
+                <img src={image4} alt="image4" />
+              </div>
               <div className={styles.formeAffiche}></div>
               <div className={styles.formeAffiche}></div>
               <div className={styles.formeAffiche}></div>
