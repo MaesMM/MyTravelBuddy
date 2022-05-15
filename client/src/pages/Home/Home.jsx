@@ -59,16 +59,6 @@ const Home = () => {
                 position={position}
                 icon={currentLocation("user")}
               ></Marker>
-              <Marker
-                ref={button2}
-                position={[position[0], position[1]]}
-                icon={getIcon("theater")}
-                eventHandlers={{
-                  click: () => {
-                    setIsShown2(!isShown2);
-                  },
-                }}
-              ></Marker>
 
               {/* Display Locations */}
 
