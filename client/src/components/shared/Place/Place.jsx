@@ -2,14 +2,16 @@ import styles from "./Place.module.scss";
 import show from "../../../assets/images/Place/show.jpg";
 import star from "../../../assets/images/Place/star-solid.svg";
 import useClickedOutside from "../../../hooks/useClickedOutside";
-const Place = () => {
+const Place = ({ data }) => {
   return (
     
       
         <div className={styles.container}>
-        <div className={styles.imgpresentation}></div>
+        <div className={styles.imgpresentation} 
+        style={{ backgroundImage:`url(${data.image})`,backgroundRepeat:"no-repeat", backgroundPosition:"center" }}>
+        </div>
         <div className={styles.presentation}>
-          <span className={styles.title}>Palais des Beaux-Arts</span>
+          <span className={styles.title}>{data.name}</span>
           <div className={styles.noteetoile}>
             <img className={styles.star} src={star} />
             <img className={styles.star} src={star} />
@@ -56,38 +58,7 @@ const Place = () => {
           <span className={styles.destitle}>Description du lieu</span>
           <div className={styles.paragraphcontainer}>
             <span className={styles.paragraph}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et
-              ex massa. Etiam condimentum aliquam nisl, eu tincidunt arcu
-              condimentum vitae. Phasellus ut dolor sit amet augue egestas
-              ornare. Donec tincidunt maximus augue, vel iaculis nisi eleifend
-              id. Nulla dapibus odio dolor. Integer auctor et nibh nec
-              ultricies. Morbi tristique, orci nec condimentum vestibulum, neque
-              nisi elementum massa, sit amet egestas lorem libero at mi. Morbi a
-              mauris nec eros tincidunt gravida. Curabitur iaculis pretium
-              neque, ac luctus lacus dictum quis. Suspendisse eget massa nec
-              tellus molestie molestie. Proin sed ipsum nulla. Interdum et
-              malesuada fames ac ante ipsum primis in faucibus. Aliquam nunc
-              massa, aliquam non mattis et, suscipit ut nibh. Pellentesque et
-              sem pellentesque, bibendum mi at, sollicitudin ligula. Curabitur
-              sit amet elit sed lacus consectetur fringilla. Nullam malesuada
-              elit eu lectus rhoncus, a porttitor orci tempus. Duis eget est sit
-              amet risus rhoncus suscipit. Nam ac sodales libero, id semper
-              mauris. Etiam et ipsum non erat accumsan ultricies. Aliquam
-              scelerisque tincidunt ante quis rhoncus. Sed viverra purus sit
-              amet vulputate hendrerit. Orci varius natoque penatibus et magnis
-              dis parturient montes, nascetur ridiculus mus. Mauris sit amet
-              gravida velit. Aliquam nibh mi, vulputate a aliquet et, dignissim
-              eget magna. Pellentesque lacinia sapien ut tortor hendrerit, eget
-              dictum orci vehicula. Etiam tincidunt orci risus, eget porta dui
-              ullamcorper vel. Nunc vehicula tempor porta. Nunc egestas
-              porttitor velit, eu auctor tellus tempus sed. Pellentesque aliquam
-              scelerisque odio ut gravida. Mauris semper dolor massa, et aliquam
-              augue eleifend eu. Mauris sagittis dictum placerat. Quisque
-              vulputate cursus mauris quis ornare. Donec pulvinar pharetra
-              justo. Nam arcu justo, mattis et metus vitae, pellentesque ornare
-              lorem. Duis ultricies quis lacus ut malesuada. Sed vitae nibh nec
-              tortor egestas mattis in et ex. Fusce eleifend nec lacus pharetra
-              pellentesque.
+                {data.description}
             </span>
           </div>
         </div>

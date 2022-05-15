@@ -199,17 +199,17 @@ app.get("/images/:key", (req, res) => {
 app.post("/api/images", upload.single("image"), async (req, res) => {
   const file = req.file;
   console.log(file);
-
-  // apply filter
-  // resize
-
   const result = await uploadFile(file);
   await unlinkFile(file.path);
   console.log("dababy", result);
   const description = req.body.description;
   res.send(result.Location);
 });
-// s3 end
+
+  // apply filter
+  // resize
+
+app.post('/getEventsData', async (req, res) => Event.ApiRegister(req, res));
 
 // Start Server
 

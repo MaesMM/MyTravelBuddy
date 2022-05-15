@@ -31,8 +31,12 @@ const Create = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
-    data.location_id = 1;
+    // data.location_id = 1;
     data.category = "test category";
+
+    //add latitude and longitude
+    data.latitude = 3.17000
+    data.longitude = 50.6900
 
     const result = await postImage(file);
     if (result) {
@@ -118,7 +122,7 @@ const Create = () => {
 
         <label className="form-group">
           Adresse :
-          <input className="input" type="text" {...register('address', { required: true })} />
+          <input className="input" type="text" {...register('adresse', { required: true })} />
         </label>
 
         <label className={styles.ImageInput}>

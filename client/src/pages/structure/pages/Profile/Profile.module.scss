@@ -3,15 +3,28 @@
 .EspacePro {
   display: flex;
 }
-span {
-  padding: 10px;
-}
 
-h4 {
-  margin-bottom: 5px;
-}
-h3 {
-  margin-bottom: 20px;
+.profile {
+
+
+  span {
+    padding: 10px;
+  }
+  
+  h4 {
+    margin-bottom: 5px;
+  }
+  h3 {
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+  img {
+    object-fit: contain;
+  }
+
 }
 .component {
   width: 30%;
@@ -31,12 +44,7 @@ h3 {
 .content {
   padding: 50px 100px;
 }
-h1 {
-  font-size: 4rem;
-}
-img {
-  object-fit: contain;
-}
+
 .preview {
   width: 45%;
 

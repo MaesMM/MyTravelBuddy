@@ -31,7 +31,7 @@ const Home = () => {
   useEffect(() => {
     // get and display locations
     api
-      .get(`locations/getAll`)
+      .get(`events`)
       .then((res) => {
         setLocations(res.data);
         console.log(res);
@@ -41,6 +41,7 @@ const Home = () => {
 
   const [isShown, setIsShown] = useState(false);
   const { target2, button2, isShown2, setIsShown2 } = useClickedOutside2();
+  const [placeData, setPlaceData] = useState({});
 
   return (
     <>
@@ -65,16 +66,20 @@ const Home = () => {
               {locations.map((data) => (
                 <Marker
                   ref={button2}
-                  position={[data.latitude, data.longitude]}
+                  key={data.id}
+                  position={[data.longitude, data.latitude]}
                   icon={getIcon("theater")}
                   eventHandlers={{
                     click: () => {
+                      if (!isShown) {
+                        setPlaceData(data);
+                      }
                       setIsShown2(!isShown2);
                     },
                   }}
                 >
                   {/* <Popup>
-                  A pretty CSS3 popup. <br /> Easily customizable.
+                  {data.name}
                 </Popup> */}
                 </Marker>
               ))}
@@ -82,7 +87,7 @@ const Home = () => {
             {isShown2 && (
               <div className={styles.background}>
                 <div className={styles.containerPlace} ref={target2}>
-                  <Place />
+                  <Place data={placeData} />
                 </div>
               </div>
             )}
